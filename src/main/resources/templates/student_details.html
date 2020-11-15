@@ -7,7 +7,9 @@
 </head>
 <body>
 <div class="container">
-    <h1>Details of student: <span th:text="${studentWithDetailedInfo.firstName} + ${studentWithDetailedInfo.lastName}"></span></h1>
+    <div th:replace="pagefragments::navigator"/>
+    <h1>Details of student: <span
+            th:text="${studentWithDetailedInfo.firstName +' '+ studentWithDetailedInfo.lastName}"></span></h1>
     <div>
         <div>
             <table>

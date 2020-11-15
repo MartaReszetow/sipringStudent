@@ -7,6 +7,7 @@
 </head>
 <body>
 <div class="container">
+    <div th:replace="pagefragments::navigator"/>
     <table>
         <tr>
             <th>Id</th>
@@ -25,9 +26,9 @@
                 <span th:text="${student.lastName}"></span>
             </td>
             <td>
-                <a th:href="@{/student/delete/${student.id}}">Remove</a>
+                <a th:href="@{/student/delete/{id}(id=${student.id})}">Remove</a>
                 <a th:href="@{/student/{id}(id=${student.id})}">Details</a>
-                <a th:href="@{/student/edit/${student.id}}">Edit</a>
+                <a th:href="@{/student/edit/{id}(id=${student.id})}">Edit</a>
             </td>
         </tr>
     </table>

@@ -75,4 +75,26 @@ public class StudentController {
         }
         return "redirect:/student";
     }
+
+
+    // ############ USUWANIE
+    @GetMapping("/delete/{id}")
+    public String removeStudent(@PathVariable(name = "id") Long id) {
+        studentService.delete(id);
+        return "redirect:/student";
+    }
+
+
+    // ############ EDYCJA
+    @GetMapping("/edit/{id}")
+    public String editStudent(Model model, @PathVariable(name = "id") Long id) {
+        Optional<Student> studentOptional = studentService.find(id);
+        if (studentOptional.isPresent()) {
+            model.addAttribute("addedStudent", studentOptional.get());
+            return "student_form";
+        }
+        return "redirect:/student";
+    }
+
+
 }

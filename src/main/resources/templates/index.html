@@ -5,6 +5,7 @@
     <title>Index page</title>
 </head>
 <body>
+<div th:replace="pagefragments::navigator"/>
 <h1 th:if="${moje_imie != null}">Heloł holoł maj frend <span th:text="${moje_imie}"></span></h1>
 <h1 th:if="${moje_imie == null}">Heloł holoł zią!</h1>
 </body>
