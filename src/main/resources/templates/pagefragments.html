@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+<th:block th:fragment="navigator">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/student}">Student list</a></li>
+        <li><a th:href="@{/multiply}">Multiplication tool</a></li>
+        <li><a th:href="@{/welcome}">Welcome Page</a></li>
+        <li><a th:href="@{/student/form}">Student form/add tool</a></li>
+    </ul>
+</th:block>
+</body>
+</html>
+
