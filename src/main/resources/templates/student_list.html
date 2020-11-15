@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="container">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="student : ${listOfStudents}">
+            <td>
+                <span th:text="${student.id}"></span>
+            </td>
+            <td>
+                <span th:text="${student.firstName}"></span>
+            </td>
+            <td>
+                <span th:text="${student.lastName}"></span>
+            </td>
+            <td>
+                <a th:href="@{/student/delete/${student.id}}">Remove</a>
+                <a th:href="@{/student/{id}(id=${student.id})}">Details</a>
+                <a th:href="@{/student/edit/${student.id}}">Edit</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
+    // Or with jQuery
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+</body>
+</html>

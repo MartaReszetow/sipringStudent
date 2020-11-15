@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index page</title>
+</head>
+<body>
+<h1 th:if="${moje_imie != null}">Heloł holoł maj frend <span th:text="${moje_imie}"></span></h1>
+<h1 th:if="${moje_imie == null}">Heloł holoł zią!</h1>
+</body>
+</html>

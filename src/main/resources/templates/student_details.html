@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Details of student: <span th:text="${studentWithDetailedInfo.firstName} + ${studentWithDetailedInfo.lastName}"></span></h1>
+    <div>
+        <div>
+            <table>
+                <tr>
+                    <td>Imie:</td>
+                    <td th:text="${studentWithDetailedInfo.firstName}"></td>
+                </tr>
+                <tr>
+                    <td>Nazwisko:</td>
+                    <td th:text="${studentWithDetailedInfo.lastName}"></td>
+                </tr>
+                <tr>
+                    <td>Graduated:</td>
+                    <td th:text="${studentWithDetailedInfo.graduated}"></td>
+                </tr>
+                <tr>
+                    <td>Average:</td>
+                    <td th:text="${studentWithDetailedInfo.gradesAverage}"></td>
+                </tr>
+                <tr>
+                    <td>Home distance:</td>
+                    <td th:text="${studentWithDetailedInfo.homeDistance}"></td>
+                </tr>
+                <tr>
+                    <td>Birth date:</td>
+                    <td th:text="${studentWithDetailedInfo.birthDate}"></td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td th:text="${studentWithDetailedInfo.age}"></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <a th:href="@{/grade/form(studentId=${studentWithDetailedInfo.id})}">Add grade</a>
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Value</th>
+                    <th>Date</th>
+                    <th>Subject</th>
+                    <th>Actions</th>
+                </tr>
+                <tr th:each="grade : ${studentWithDetailedInfo.gradeSet}">
+                    <td th:text="${grade.id}"></td>
+                    <td th:text="${grade.value}"></td>
+                    <td th:text="${grade.timeCreated}"></td>
+                    <td th:text="${grade.subject}"></td>
+                    <td>
+                        <a th:href="@{/grade/remove(gradeId=${grade.id})}">Remove</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
+    // Or with jQuery
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+</body>
+</html>

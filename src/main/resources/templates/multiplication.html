@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<!--Odwoływanie do zminych = ${}-->
+<!--Odwoływanie do adresów/linków = @{}-->
+
+<form th:action="@{/multiply}" method="post">
+    Rows: <input type="number" name="rows" min="1" step="1"/><br/>
+    Cols: <input type="number" name="cols" min="1" step="1"/><br/>
+    <input type="submit">
+</form>
+<table th:if="${rowNum!= null && colNum !=null}">
+    <tr th:each="row : ${#numbers.sequence(1, rowNum)}">
+        <td th:each="col : ${#numbers.sequence(1, colNum)}">
+            <span th:text="${row*col}"></span>
+        </td>
+    </tr>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
+    // Or with jQuery
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+</body>
+</html>

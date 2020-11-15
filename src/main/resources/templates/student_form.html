@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/student}" method="post" th:object="${addedStudent}">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label>First name:</label>
+            <!-- Notacja:
+            ${} - zmienna/atrybut
+            @{} - adres,
+            *{} - pola w obrębie obiektu th:object
+            -->
+            <input type="text" th:field="*{firstName}"/>
+        </div>
+        <div>
+            <label>Last name:</label>
+            <input type="text" th:field="*{lastName}"/>
+        </div>
+        <div>
+            <label>Date of birth:</label>
+            <input type="date" th:field="*{birthDate}"/>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" th:field="*{graduated}">
+                <span>Graduated</span>
+            </label>
+        </div>
+        <div>
+            <label>Home distance:</label>
+            <input type="number" step="0.01" th:field="*{homeDistance}"/>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
+    // Or with jQuery
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+</body>
+</html>
